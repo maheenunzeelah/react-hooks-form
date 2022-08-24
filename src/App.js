@@ -22,7 +22,7 @@ function App() {
     age:23,
   })
   const [number,setNumber]=useState();
-  const {register,watch,handleSubmit,setValue, formState:{ errors,isDirty,isValid }}=useForm({  
+  const {register,trigger,watch,handleSubmit,setValue, formState:{ errors,isDirty,isValid }}=useForm({  
     mode: 'onChange',
     resolver:yupResolver(schema),
     // defaultValues:formState
