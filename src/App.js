@@ -22,7 +22,7 @@ function App() {
     age:23,
   })
   const [number,setNumber]=useState();
-  const {register,trigger,watch,handleSubmit,setValue, formState:{ errors,isDirty,isValid }}=useForm({  
+  const {register,trigger,watch,reset,handleSubmit,setValue, formState:{ errors,isDirty,isValid }}=useForm({  
     mode: 'onChange',
     resolver:yupResolver(schema),
     // defaultValues:formState
@@ -101,7 +101,12 @@ function App() {
           />
           <p>{errors.details?.message}</p></>}
              
+          <button type="button" onClick={()=>reset({ firstName: "",lastName:"",email:"",age:"",details:"",showDetails:false })}>Clear All</button>
+          <button type="button"  onClick={async () => {
+          const result = await trigger(["firstName", "lastName"]);
+        }}>Validate Name</button>
           <button type="submit" id="submit" disabled={!isValid} >Submit</button>
+
         </form>
     </div>
   );
