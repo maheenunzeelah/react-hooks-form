@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
+import DetailsModals from './components/Modal';
+
+
 const schema=yup.object().shape({
 firstName:yup.string().required("First Name is required"),
 lastName:yup.string().required("Last Name is required"),
 email:yup.string().email().required() ,
-
 age: yup.number().typeError("Enter number only").required(),
 showDetails:yup.boolean(),
 details:yup.string().when('showDetails',{is:true,
@@ -41,6 +43,7 @@ function App() {
   return (
     <div className="App">
      <h1>React Hooks Form Practice</h1>
+     <DetailsModals />
      <form onSubmit={handleSubmit(submitForm)}>
           <input
             type="text"
